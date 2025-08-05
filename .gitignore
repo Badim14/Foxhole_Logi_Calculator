@@ -1,0 +1,31 @@
+# Node.js общие файлы
+node_modules/
+package-lock.json
+
+# Логи
+/foxhole_parser.log
+
+# Операционная система
+.DS_Store
+Thumbs.db
+
+# Конфиденциальные данные
+.env
+
+# Пустые директории или файлы
+*.log
+*.tmp
+*.temp
+
+# Компиляторы и сборщики
+/dist/
+/build/
+
+# IDE и редакторы
+.vscode/
+.idea/
+
+# Другие файлы
+*.swp
+*.swo
+*.bak

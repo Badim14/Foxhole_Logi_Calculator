@@ -1,0 +1,255 @@
+/* styles.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.controls {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.filter-group {
+    flex: 1;
+}
+
+#itemGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.item-card {
+    width: 5%;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 2px;
+    cursor: pointer;
+    position: relative;
+    transition: box-shadow 0.3s;
+}
+
+.item-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 2px;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
+.cart {
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #1e1e1e;
+    min-height: 400px;
+    flex-grow: 1;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 4px;
+}
+
+.cart-item .remove-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(0,0,0,0.5);
+    border: none;
+    color: #fff;
+    padding: 2px 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cart-item .remove-btn:hover {
+    background: rgba(255,255,255,0.5);
+    color: #000;
+}
+
+.cart-summary {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 4px;
+}
+
+.materials-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.material-item {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.material-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.tooltip-container {
+    width: max-content;
+    max-width: 100%;
+    word-wrap: break-word;
+    font-size: 1em;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-items: center;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.tooltip-header {
+    grid-column: 1 / -1;
+    white-space: nowrap;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.tooltip-text {
+    grid-column: 1 / -1;
+    font-size: 1em;
+    margin: 0;
+    color: #ccc;
+}
+
+.tooltip-image {
+    max-width: 3em;
+    max-height: 3em; 
+    object-fit: contain;
+    display: inline-block; 
+    vertical-align: middle; 
+    margin: 5px;
+}
+
+.tooltip-row {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    grid-column: 1 / -1;
+    text-align: center; 
+    flex-wrap: wrap; 
+    width: 100%; 
+}
+
+.tooltip-row span {
+    white-space: normal;
+    text-align: center;
+    margin: 5px;
+}
+
+.cart-item {
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+}
+
+.cart-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cart-item:hover {
+    opacity: 0.7;
+}
+
+.container-fluid {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.row {
+    flex: 1;
+    display: flex;
+}
+
+.col-md-8, .col-md-4 {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#cart {
+    flex: 1;
+    overflow: visible !important;
+}
+
+.btn {
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+.btn-sm {
+    padding: 3px 8px;
+    font-size: 12px;
+}
