@@ -11,8 +11,9 @@ app.use(express.static('public'));
 app.use(cors());
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-// Configuration
-const PORT = process.env.PORT || 5000;
+// Configuration with better defaults
+const PORT = process.env.PORT || 3000;
+const NODE_ENV = process.env.NODE_ENV || 'development';
 const VALID_FACTIONS = ['Warden', 'Colonial', 'Neutral'];
 
 // Helper functions

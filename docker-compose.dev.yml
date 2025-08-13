@@ -8,9 +8,18 @@ services:
     depends_on:
       - db
     environment:
-      - PORT=3000
-      - DATABASE_URL=postgres://foxhole:password@db:5432/foxhole
       - NODE_ENV=development
+      - PORT=3000
+      # Database connection - both ways for flexibility
+      - DATABASE_URL=postgres://foxhole:password@db:5432/foxhole
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=foxhole
+      - DB_USER=foxhole
+      - DB_PASSWORD=password
+      # Logging
+      - LOG_LEVEL=debug
+      - DEBUG=*
     volumes:
       - ./public:/app/public
       - ./logs:/app/logs
@@ -25,6 +34,7 @@ services:
       - POSTGRES_USER=foxhole
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=foxhole
+      - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --lc-collate=C --lc-ctype=C
     volumes:
       - postgres_data_dev:/var/lib/postgresql/data
     ports:
@@ -32,6 +42,11 @@ services:
     restart: unless-stopped
     networks:
       - foxhole-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U foxhole -d foxhole"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
   postgres_data_dev:
