@@ -5,9 +5,6 @@ const path = require('path');
 const db = require('./db');
 const apiRouter = express.Router();
 
-// Import parser for first-time setup
-const { runParserIfNeeded } = require('./pars');
-
 // Application initialization
 const app = express();
 app.use(express.static('public'));
@@ -376,23 +373,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
-// Start server with automatic parser setup
-async function startServer() {
-  try {
-    // Check if database needs initialization
-    console.log('🔍 Checking database initialization...');
-    await runParserIfNeeded();
-    
-    // Start the server
-    app.listen(PORT, () => {
-      console.log(`🚀 Server is running on port ${PORT}`);
-      console.log(`🌐 Web interface: http://localhost:${PORT}`);
-      console.log(`🗄️  Database: ${process.env.DB_HOST || 'db'}:${process.env.DB_PORT || 5432}`);
-    });
-  } catch (error) {
-    console.error('❌ Failed to start server:', error);
-    process.exit(1);
-  }
-}
-
-startServer();
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});

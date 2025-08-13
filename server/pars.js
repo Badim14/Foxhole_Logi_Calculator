@@ -790,47 +790,8 @@ async function main() {
         log.info("Script completed successfully");
     } catch (error) {
         log.error(`Critical error: ${error.message}`);
-        throw error; // Don't exit process, let caller handle it
-    }
-}
-
-/**
- * Check if database needs initialization and run parser if needed
- */
-async function runParserIfNeeded() {
-    try {
-        const pool = new Pool(DB_CONFIG);
-        const client = await pool.connect();
-        
-        try {
-            // Check if we have any data in the database
-            const result = await client.query('SELECT COUNT(*) FROM item');
-            const itemCount = parseInt(result.rows[0].count);
-            
-            if (itemCount === 0) {
-                log.info('📊 Database is empty, running initial data import...');
-                await main();
-                log.info('✅ Initial data import completed');
-            } else {
-                log.info(`📊 Database already has ${itemCount} items, skipping import`);
-            }
-        } finally {
-            client.release();
-            await pool.end();
-        }
-    } catch (error) {
-        log.error('❌ Error checking database status:', error.message);
-        throw error;
-    }
-}
-
-// Export the function for use in index.js
-module.exports = { runParserIfNeeded };
-
-// Only run main() if this file is executed directly
-if (require.main === module) {
-    main().catch(error => {
-        log.error(`Critical error: ${error.message}`);
         process.exit(1);
-    });
+    }
 }
+
+main();
