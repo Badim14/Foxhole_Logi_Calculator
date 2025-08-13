@@ -17,7 +17,7 @@ RUN npm ci --only=production
 COPY . .
 
 # Создаем необходимые директории
-RUN node server/pars.js
+RUN mkdir -p logs server/images/items server/images/materials
 
 # Устанавливаем правильные права доступа
 RUN chown -R node:node /app
