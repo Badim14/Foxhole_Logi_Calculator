@@ -10,14 +10,16 @@ services:
     environment:
       - PORT=3000
       - DATABASE_URL=postgres://foxhole:password@db:5432/foxhole
-      - NODE_ENV=production
+      - NODE_ENV=development
     volumes:
       - ./public:/app/public
       - ./server:/app/server
       - ./logs:/app/logs
+      - /app/node_modules
     restart: unless-stopped
     networks:
       - foxhole-network
+    command: npm run dev
 
   db:
     image: postgres:15-alpine
@@ -26,7 +28,7 @@ services:
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=foxhole
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data_dev:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     restart: unless-stopped
@@ -34,8 +36,8 @@ services:
       - foxhole-network
 
 volumes:
-  postgres_data:
+  postgres_data_dev:
 
 networks:
   foxhole-network:
-    driver: bridge
+    driver: bridge 

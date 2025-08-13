@@ -5,16 +5,16 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Копируем package.json и package-lock.json
-COPY ./package*.json ./server/
+COPY package*.json ./
 
-# Устанавливаем зависимости сервера
-RUN cd server && npm install
+# Устанавливаем зависимости
+RUN npm install
 
 # Копируем остальные файлы
 COPY . .
 
-# Собираем приложение (если нужно)
-# RUN npm run build
+# Создаем директорию для логов
+RUN mkdir -p logs
 
 # Открываем порт, на котором работает приложение
 EXPOSE 3000
