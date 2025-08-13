@@ -1,6 +1,5 @@
 # Node.js общие файлы
 node_modules/
-package-lock.json
 
 # Логи
 /foxhole_parser.log

@@ -5,7 +5,7 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Копируем package.json и package-lock.json
-COPY server/package*.json ./server/
+COPY ./package*.json ./server/
 
 # Устанавливаем зависимости сервера
 RUN cd server && npm install
