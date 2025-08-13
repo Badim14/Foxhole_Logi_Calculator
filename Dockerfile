@@ -4,11 +4,11 @@ FROM node:18-alpine
 # Создаем рабочую директорию
 WORKDIR /app
 
-# Копируем package.json и package-lock.json
+# Копируем package.json и package-lock.json из корня проекта
 COPY package*.json ./
 
 # Устанавливаем зависимости
-RUN npm install
+RUN npm ci --only=production
 
 # Копируем остальные файлы
 COPY . .

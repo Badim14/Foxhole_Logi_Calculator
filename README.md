@@ -226,6 +226,13 @@ docker-compose up -d
 # Запуск с пересборкой
 docker-compose up --build -d
 
+# Полная пересборка (рекомендуется при проблемах)
+# В Windows PowerShell:
+.\rebuild.ps1
+
+# В Linux/macOS:
+./rebuild.sh
+
 # Просмотр логов
 docker-compose logs -f app
 docker-compose logs -f db

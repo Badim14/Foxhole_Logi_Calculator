@@ -95,9 +95,37 @@ docker-compose build --no-cache app
 
 # Перезапустить
 docker-compose up -d
+
+# Или использовать полную пересборку:
+# В Windows PowerShell:
+.\rebuild.ps1
+
+# В Linux/macOS:
+./rebuild.sh
 ```
 
-### 2. Проблемы с парсером данных
+### 2. Модули не найдены (Cannot find module)
+
+**Ошибка**: `Error: Cannot find module 'axios'` или подобные
+
+**Причина**: Зависимости не установлены корректно в контейнере
+
+**Решение**:
+```bash
+# Остановить контейнеры
+docker-compose down
+
+# Удалить образы
+docker-compose down --rmi all
+
+# Очистить Docker кэш
+docker system prune -f
+
+# Пересобрать с нуля
+docker-compose up --build -d
+```
+
+### 3. Проблемы с парсером данных
 
 **Проверка**:
 ```bash
@@ -117,7 +145,7 @@ docker exec -it foxhole-app-1 ping google.com
 docker exec -it foxhole-app-1 ls -la server/images
 ```
 
-### 3. Проблемы с изображениями
+### 4. Проблемы с изображениями
 
 **Ошибка**: Изображения не загружаются
 
